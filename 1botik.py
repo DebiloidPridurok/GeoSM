@@ -83,26 +83,27 @@ bot_data = {
 # ====== БАЗА ДАННЫХ ДЛЯ ЛОГИРОВАНИЯ ======
 def init_db():
     """Инициализация базы данных для логов"""
-    conn = sqlite3.connect(DB_PATH)  # Теперь используем указанный путь
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS messages (
+        CREATE TABLE IF NOT EXISTS user_actions (
             user_id INTEGER,
             username TEXT,
-            message TEXT,
+            action_type TEXT,
+            action_data TEXT,
             date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
     conn.commit()
     conn.close()
 
-def save_message(user_id: int, username: str, message: str):
-    """Сохраняет сообщение в базу данных"""
-    conn = sqlite3.connect(DB_PATH)  # И здесь тоже
+def save_action(user_id: int, username: str, action_type: str, action_data: str):
+    """Сохраняет действие пользователя в базу данных"""
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO messages (user_id, username, message) VALUES (?, ?, ?)",
-        (user_id, username, message)
+        "INSERT INTO user_actions (user_id, username, action_type, action_data) VALUES (?, ?, ?, ?)",
+        (user_id, username, action_type, action_data)
     )
     conn.commit()
     conn.close()
