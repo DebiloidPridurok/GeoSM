@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 # ====== НАСТРОЙКА ПУТИ К БАЗЕ ДАННЫХ ======
-DB_FOLDER = Path(r"//mnt/windows_share")  # мой путь
+DB_FOLDER = Path(r"/mnt/")  # мой путь
 DB_FOLDER.mkdir(parents=True, exist_ok=True)  # Создаем папку если её нет
 DB_PATH = DB_FOLDER / "bot_messages.db"  # Полный путь к файлу БД
 
