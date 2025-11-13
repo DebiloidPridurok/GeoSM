@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 
 # ====== НАСТРОЙКА ПУТИ К БАЗЕ ДАННЫХ ======
-DB_FOLDER = Path(r"/mnt/")
+DB_FOLDER = Path(r"/share/")
 DB_FOLDER.mkdir(parents=True, exist_ok=True)
 DB_PATH = DB_FOLDER / "bot_messages.db"
 SUGGESTIONS_DB_PATH = DB_FOLDER / "suggestions.db"
@@ -438,3 +438,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
